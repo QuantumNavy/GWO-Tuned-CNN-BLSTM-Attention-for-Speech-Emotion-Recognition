@@ -35,13 +35,13 @@ Input (1 × 128 × 128 Mel-Spectrogram)
 │  CNN Block × 3                │
 │  Conv2d → BatchNorm → ReLU    │
 │  → MaxPool2d                  │
-│  Filters: 32 → 64 → 128      │
+│  Filters: 32 → 64 → 128       │
 └───────────────┬───────────────┘
                 │  Reshape to sequence
                 ▼
 ┌───────────────────────────────┐
 │  Bidirectional LSTM           │
-│  hidden_dim = 128 (× 2 dirs) │
+│  hidden_dim = 128 (× 2 dirs)  │
 └───────────────┬───────────────┘
                 │
                 ▼
@@ -298,7 +298,7 @@ The parameter `a` decreases linearly from 2 → 0 across iterations, shifting wo
 - GWO search is lightweight (3 wolves × 3 iters × 3 epochs) for speed — increasing these will yield better hyperparameters at the cost of more compute
 - Augmentation is applied once at data-loading time (static augmentation); online augmentation per epoch could further improve robustness
 - The model currently ignores speaker identity — speaker-independent cross-validation would give a more realistic performance estimate
-- Possible extensions: add MFCC or delta features alongside Mel spectrograms, try Transformer encoder in place of BLSTM, or experiment with contrastive pre-training
+
 
 
 ---
